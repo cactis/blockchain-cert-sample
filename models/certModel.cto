@@ -1,7 +1,16 @@
+// https://composer-playground.mybluemix.net/editor
+
 /**
  * Sample business network definition.
  */
 namespace org.pccu.certnetwork
+
+
+abstract asset CertBase identified by CertBaseId {
+  --> Issuer issuerId
+  o String CertBaseId
+  o String title 
+}
 
 asset Cert identified by assetId {
   o String assetId
@@ -21,6 +30,14 @@ participant Receiver identified by receiverId {  //studnet
   o String firstName
   o String lastName
 }
+
+// transaction Issue identified by issueId {
+//   o String issueId
+//   --> Cert cert
+//   --> Issuer issuer
+//   --> Receiver receiver
+//   o String year 
+// }
 
 transaction CertTransaction identified by transactionId {
   o String transactionId
