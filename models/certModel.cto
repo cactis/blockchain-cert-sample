@@ -1,0 +1,37 @@
+/**
+ * Sample business network definition.
+ */
+namespace org.pccu.certnetwork
+
+asset Cert identified by assetId {
+  o String assetId
+  --> Issuer issuer
+  --> Receiver receiver
+  o String title
+}
+
+participant Issuer identified by issuerId { //school
+  o String issuerId
+  o String issuerName
+  o String address
+}
+
+participant Receiver identified by receiverId {  //studnet
+  o String receiverId
+  o String firstName
+  o String lastName
+}
+
+transaction CertTransaction identified by transactionId {
+  o String transactionId
+  --> Cert cert
+  --> Receiver receiver
+}
+
+/*
+event SampleEvent identified by eventId {
+  o String eventId
+  --> SampleAsset asset
+  o String oldValue
+  o String newValue
+}*/
