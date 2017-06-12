@@ -5,18 +5,25 @@
  */
 namespace org.pccu.certnetwork
 
+enum CertStatus {
+  o EXPIRED
+  o REVOKED
+  o EFFECTIVE
+}
 
-abstract asset CertBase identified by CertBaseId {
+
+asset CertTemplate identified by certTemplateId {
   --> Issuer issuerId
-  o String CertBaseId
+  o String certTemplateId
   o String title 
 }
 
 asset Cert identified by assetId {
   o String assetId
-  --> Issuer issuer
-  --> Receiver receiver
-  o String title
+  o String date
+  o String CertStatus
+    --> Receiver receiver
+    --> CertTemplate certTemplate
 }
 
 participant Issuer identified by issuerId { //school
