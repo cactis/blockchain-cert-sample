@@ -15,7 +15,6 @@ enum CertStatus {
 participant Issuer identified by issuerId { 
   o String issuerId
   o String issuerName
-  o String address
 }
 
 // studnet
@@ -28,36 +27,20 @@ participant Receiver identified by receiverId {
 // cert template
 asset CertTemplate identified by certTemplateId {
   o String certTemplateId
-  --> Issuer issuerId
+  --> Issuer issuer
   o String title 
 }
 
 asset Cert identified by certId {
   o String certId
-  --> CertTemplate certTemplateId
-  --> Receiver receiverId
+  --> CertTemplate certTemplate
+  --> Receiver receiver
   o String CertStatus
-  o String created_at
+  o String createdAt
 }
-
-// transaction Issue identified by issueId {
-//   o String issueId
-//   --> Cert cert
-//   --> Issuer issuer
-//   --> Receiver receiver
-//   o String year 
-// }
 
 transaction CertTransaction identified by transactionId {
   o String transactionId
   --> Cert cert
   --> Receiver receiver
 }
-
-/*
-event SampleEvent identified by eventId {
-  o String eventId
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
-}*/
