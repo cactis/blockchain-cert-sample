@@ -11,31 +11,33 @@ enum CertStatus {
   o EFFECTIVE
 }
 
-
-asset CertTemplate identified by certTemplateId {
-  --> Issuer issuerId
-  o String certTemplateId
-  o String title 
-}
-
-asset Cert identified by assetId {
-  o String assetId
-  o String date
-  o String CertStatus
-    --> Receiver receiver
-    --> CertTemplate certTemplate
-}
-
-participant Issuer identified by issuerId { //school
+// school
+participant Issuer identified by issuerId { 
   o String issuerId
   o String issuerName
   o String address
 }
 
-participant Receiver identified by receiverId {  //studnet
+// studnet
+participant Receiver identified by receiverId {  
   o String receiverId
   o String firstName
   o String lastName
+}
+
+// cert template
+asset CertTemplate identified by certTemplateId {
+  o String certTemplateId
+  --> Issuer issuerId
+  o String title 
+}
+
+asset Cert identified by certId {
+  o String certId
+  --> CertTemplate certTemplateId
+  --> Receiver receiverId
+  o String CertStatus
+  o String created_at
 }
 
 // transaction Issue identified by issueId {
