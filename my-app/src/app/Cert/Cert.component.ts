@@ -17,42 +17,29 @@ export class CertComponent implements OnInit {
   private currentId;
 	private errorMessage;
 
-  
       certId = new FormControl("", Validators.required);
-  
-      certTemplate = new FormControl("", Validators.required);
-  
-      receiver = new FormControl("", Validators.required);
-  
-      CertStatus = new FormControl("", Validators.required);
-  
-      createdAt = new FormControl("", Validators.required);
-  
 
+      certTemplate = new FormControl("", Validators.required);
+
+      receiver = new FormControl("", Validators.required);
+
+      CertStatus = new FormControl("", Validators.required);
+
+      createdAt = new FormControl("", Validators.required);
 
   constructor(private serviceCert:CertService, fb: FormBuilder) {
     this.myForm = fb.group({
-    
-        
+
           certId:this.certId,
-        
-    
-        
+
           certTemplate:this.certTemplate,
-        
-    
-        
+
           receiver:this.receiver,
-        
-    
-        
+
           CertStatus:this.CertStatus,
-        
-    
-        
+
           createdAt:this.createdAt
-        
-    
+
     });
   };
 
@@ -88,51 +75,31 @@ export class CertComponent implements OnInit {
 
     this.asset = {
       $class: "org.pccu.certnetwork.Cert",
-      
-        
+
           "certId":this.certId.value,
-        
-      
-        
+
           "certTemplate":this.certTemplate.value,
-        
-      
-        
+
           "receiver":this.receiver.value,
-        
-      
-        
+
           "CertStatus":this.CertStatus.value,
-        
-      
-        
+
           "createdAt":this.createdAt.value
-        
-      
+
     };
 
     this.myForm.setValue({
-      
-        
+
           "certId":null,
-        
-      
-        
+
           "certTemplate":null,
-        
-      
-        
+
           "receiver":null,
-        
-      
-        
+
           "CertStatus":null,
-        
-      
-        
+
           "createdAt":null
-        
-      
+
     });
 
     return this.serviceCert.addAsset(this.asset)
@@ -140,27 +107,17 @@ export class CertComponent implements OnInit {
     .then(() => {
 			this.errorMessage = null;
       this.myForm.setValue({
-      
-        
+
           "certId":null,
-        
-      
-        
+
           "certTemplate":null,
-        
-      
-        
+
           "receiver":null,
-        
-      
-        
+
           "CertStatus":null,
-        
-      
-        
-          "createdAt":null 
-        
-      
+
+          "createdAt":null
+
       });
     })
     .catch((error) => {
@@ -173,39 +130,18 @@ export class CertComponent implements OnInit {
     });
   }
 
-
    updateAsset(form: any): Promise<any> {
     this.asset = {
       $class: "org.pccu.certnetwork.Cert",
-      
-        
-          
-        
-    
-        
-          
+
             "certTemplate":this.certTemplate.value,
-          
-        
-    
-        
-          
+
             "receiver":this.receiver.value,
-          
-        
-    
-        
-          
+
             "CertStatus":this.CertStatus.value,
-          
-        
-    
-        
-          
+
             "createdAt":this.createdAt.value
-          
-        
-    
+
     };
 
     return this.serviceCert.updateAsset(form.get("certId").value,this.asset)
@@ -225,7 +161,6 @@ export class CertComponent implements OnInit {
 			}
     });
   }
-
 
   deleteAsset(): Promise<any> {
 
@@ -258,62 +193,48 @@ export class CertComponent implements OnInit {
     .then((result) => {
 			this.errorMessage = null;
       let formObject = {
-        
-          
+
             "certId":null,
-          
-        
-          
+
             "certTemplate":null,
-          
-        
-          
+
             "receiver":null,
-          
-        
-          
+
             "CertStatus":null,
-          
-        
-          
-            "createdAt":null 
-          
-        
+
+            "createdAt":null
+
       };
 
-
-
-      
         if(result.certId){
           formObject.certId = result.certId;
         }else{
           formObject.certId = null;
         }
-      
+
         if(result.certTemplate){
           formObject.certTemplate = result.certTemplate;
         }else{
           formObject.certTemplate = null;
         }
-      
+
         if(result.receiver){
           formObject.receiver = result.receiver;
         }else{
           formObject.receiver = null;
         }
-      
+
         if(result.CertStatus){
           formObject.CertStatus = result.CertStatus;
         }else{
           formObject.CertStatus = null;
         }
-      
+
         if(result.createdAt){
           formObject.createdAt = result.createdAt;
         }else{
           formObject.createdAt = null;
         }
-      
 
       this.myForm.setValue(formObject);
 
@@ -334,27 +255,17 @@ export class CertComponent implements OnInit {
 
   resetForm(): void{
     this.myForm.setValue({
-      
-        
+
           "certId":null,
-        
-      
-        
+
           "certTemplate":null,
-        
-      
-        
+
           "receiver":null,
-        
-      
-        
+
           "CertStatus":null,
-        
-      
-        
-          "createdAt":null 
-        
-      
+
+          "createdAt":null
+
       });
   }
 

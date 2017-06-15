@@ -20,7 +20,6 @@ describe('Starting tests for my-app', function() {
     expect(navbarBrand.getText()).toBe('cert-network@0.0.9');
   });
 
-  
     it('CertTemplate component should be loadable',() => {
       page.navigateTo('/CertTemplate');
       var assetName = browser.findElement(by.id('assetName'));
@@ -34,7 +33,6 @@ describe('Starting tests for my-app', function() {
       });
     });
 
-  
     it('Cert component should be loadable',() => {
       page.navigateTo('/Cert');
       var assetName = browser.findElement(by.id('assetName'));
@@ -47,7 +45,5 @@ describe('Starting tests for my-app', function() {
         expect(arr.length).toEqual(6); // Addition of 1 for 'Action' column
       });
     });
-
-  
 
 });

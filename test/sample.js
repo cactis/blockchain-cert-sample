@@ -51,7 +51,7 @@ describe('Sample', () => {
         const adminConnection = new AdminConnection({ fs: bfs_fs });
 
         // Create a new connection profile that uses the embedded (in-memory) runtime.
-        return adminConnection.createProfile('defaultProfile', { type : 'embedded' })
+        return adminConnection.createProfile('defaultProfile', { type: 'embedded' })
             .then(() => {
 
                 // Establish an admin connection. The user ID must be admin. The user secret is
