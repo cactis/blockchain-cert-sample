@@ -1,4 +1,7 @@
 # list Class
+get() {
+  curl -X GET --header 'Accept: application/json' http://localhost:3000/api/$1/$2 | python -m json.tool
+}
 list(){
   curl -X GET --header 'Accept: application/json' http://localhost:3000/api/$1 | python -m json.tool
 }
@@ -81,4 +84,7 @@ list Cert
 
 createCertTransaction 1 1 1
 # delete CertTransaction fd885221-6364-40e8-99bc-3dd6f911d64e
-# list CertTransaction
+list system/transactions
+get system/transactions fd885221-6364-40e8-99bc-3dd6f911d64e
+
+
