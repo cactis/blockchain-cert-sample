@@ -8,11 +8,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class CertService {
 
-	
 		private NAMESPACE: string = 'Cert';
-	
-
-
 
     constructor(private dataService: DataService<Cert>) {
     };
