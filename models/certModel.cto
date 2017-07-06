@@ -30,7 +30,8 @@ asset CertTemplate identified by certTemplateId {
   --> Issuer issuer
   o String title
   o String logo
-  o String president 
+  o String president
+  o String description 
 }
 
 asset Cert identified by certId {
@@ -39,7 +40,6 @@ asset Cert identified by certId {
   --> Receiver receiver
   o String CertStatus
   o String date
-  o String description
 }
 
 transaction CertTransaction identified by transactionId {
