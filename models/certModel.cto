@@ -28,7 +28,9 @@ participant Receiver identified by receiverId {
 asset CertTemplate identified by certTemplateId {
   o String certTemplateId
   --> Issuer issuer
-  o String title 
+  o String title
+  o String logo
+  o String president 
 }
 
 asset Cert identified by certId {
@@ -36,7 +38,8 @@ asset Cert identified by certId {
   --> CertTemplate certTemplate
   --> Receiver receiver
   o String CertStatus
-  o String createdAt
+  o String date
+  o String description
 }
 
 transaction CertTransaction identified by transactionId {
